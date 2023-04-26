@@ -69,6 +69,13 @@
           A <span style="color: {{ toy.color }}">{{ toy.color }}</span> {{ toy.name }}
         </span>
       </div>
+
+      <div class="card-action">
+        <form action="{% url 'remove_toy' hedgehog.id toy.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn">Remove</button>
+        </form>
+      </div>
     </div>
     {% endfor %} {% else %}
     <h5>No Toys :( </h5>

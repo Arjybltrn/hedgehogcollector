@@ -11,6 +11,7 @@ urlpatterns = [
     path('hedgehogs/<int:pk>/delete/', views.HedgehogDelete.as_view(), name='hedgehogs_delete'), # delete
     path('hedgehogs/<int:hedgehog_id>/add_feeding/', views.add_feeding, name='add_feeding'), #add feeding path
     path('hedgehogs/<int:hedgehog_id>/assoc_toy/<int:toy_id>/', views.assoc_toy, name='assoc_toy'), # associate a toy with a hedgehog (M:M)
+    path('hedgehogs/<int:hedgehog_id>/remove_toy/<int:toy_id>/', views.remove_toy, name='remove_toy'), #remove a toy from a hedgehog(m:m)
     path('toys/create/', views.ToyCreate.as_view(), name='toys_create'), #toy_form
     path('toys/', views.ToysIndex.as_view(), name='toys_index'), #toy_list
     path('toys/<int:pk>/', views.ToysDetail.as_view(), name='toys_detail'), #toy_detail

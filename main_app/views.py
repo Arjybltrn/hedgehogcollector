@@ -40,6 +40,11 @@ def assoc_toy(request, hedgehog_id, toy_id):
   Hedgehog.objects.get(id=hedgehog_id).toys.add(toy_id)
   return redirect('detail', hedgehog_id=hedgehog_id)
 
+def remove_toy(request, hedgehog_id, toy_id):
+  Hedgehog.objects.get(id=hedgehog_id).toys.remove(toy_id)
+  return redirect('detail', hedgehog_id=hedgehog_id)
+
+
 
 class HedgehogCreate(CreateView):
   model = Hedgehog
