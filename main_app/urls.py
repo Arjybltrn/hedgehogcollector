@@ -17,4 +17,5 @@ urlpatterns = [
     path('toys/<int:pk>/', views.ToysDetail.as_view(), name='toys_detail'), #toy_detail
     path('toys/<int:pk>/update/', views.ToyUpdate.as_view(), name='toys_update'), #toy form edit
     path('toys/<int:pk>/delete/', views.ToyDelete.as_view(), name='toys_delete'), #toy delete
+    path('accounts/signup/', views.signup, name='signup'), #signup
 ]
