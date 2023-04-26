@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 # Add the following import
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Hedgehog
+from django.views.generic import ListView, DetailView
+from .models import Hedgehog, Toy
 from .forms import FeedingForm
 
 
@@ -22,8 +23,9 @@ def hedgehogs_index(request):
 
 def hedgehogs_detail(request, hedgehog_id):
   hedgehog = Hedgehog.objects.get(id=hedgehog_id)
+  toys_hedgehog_doesnt_have = Toy.objects.exclude(id__in = hedgehog.toys.all().values_list('id'))
   feeding_form = FeedingForm()
-  return render(request, 'hedgehogs/detail.html', { 'hedgehog': hedgehog, 'feeding_form':feeding_form })
+  return render(request, 'hedgehogs/detail.html', { 'hedgehog': hedgehog, 'feeding_form':feeding_form, 'toys': toys_hedgehog_doesnt_have })
 
 def add_feeding(request, hedgehog_id):
   form = FeedingForm(request.POST)
@@ -33,10 +35,15 @@ def add_feeding(request, hedgehog_id):
     new_feeding.save()
   return redirect('detail', hedgehog_id=hedgehog_id)
 
+def assoc_toy(request, hedgehog_id, toy_id):
+  # Note that you can pass a toy's id instead of the whole object
+  Hedgehog.objects.get(id=hedgehog_id).toys.add(toy_id)
+  return redirect('detail', hedgehog_id=hedgehog_id)
+
 
 class HedgehogCreate(CreateView):
   model = Hedgehog
-  fields = '__all__'
+  fields = ('name', 'breed', 'description', 'age')
 
 class HedgehogUpdate(UpdateView):
   model = Hedgehog
@@ -45,3 +52,23 @@ class HedgehogUpdate(UpdateView):
 class HedgehogDelete(DeleteView):
   model = Hedgehog
   success_url = '/hedgehogs/'
+
+# <---- Toys Classes ---->
+
+class ToysIndex(ListView):
+  model = Toy
+
+class ToysDetail(DetailView):
+  model = Toy
+
+class ToyCreate(CreateView):
+  model = Toy
+  fields = '__all__'
+
+class ToyUpdate(UpdateView):
+  model = Toy
+  fields = '__all__'
+
+class ToyDelete(DeleteView):
+  model = Toy
+  success_url = '/toys/'

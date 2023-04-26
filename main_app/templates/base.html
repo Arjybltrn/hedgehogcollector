@@ -11,6 +11,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </head>
   <body>
@@ -23,10 +24,11 @@
             </li>
           </ul>
           <ul class="right">
-            <li><a href="/about">About</a></li>
-                <!-- new markup below -->
+                <li><a href="/about">About</a></li>
                 <li><a href="{% url 'hedgehogs_create' %}">Add a Hedgehog</a></li>
                 <li><a href="{% url 'index' %}">View All My Hedgehogs</a></li>
+                <li><a href="{% url 'toys_create' %}">Add a Toy</a></li>
+                <li><a href="{% url 'toys_index' %}">View All My Toys</a></li>
           </ul>
         </div>
       </nav>

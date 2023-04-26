@@ -2,6 +2,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    
 }
 
 main {
@@ -15,4 +16,19 @@ footer {
 
 .nav-wrapper, .page-footer {
     background-color: rgb(5, 102, 168)
+}
+
+.navbar-fixed {
+    font-family: 'Dongle', sans-serif;
+
+
+}
+
+a.left.brand-logo {
+    padding-left: 16px;
+    font-size: 60px;
+}
+
+nav ul a {
+    font-size: 20px;
 }
