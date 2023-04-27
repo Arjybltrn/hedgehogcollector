@@ -28,15 +28,16 @@
       <input type="submit" class="btn" value="Add Feeding" />
     </form>
     <br />
-    {% if hedgehog.fed_for_today %}
-    <div class="card-panel teal-text center-align">
-      {{hedgehog.name}} has been fed all meals for today
-    </div>
-    {% else %}
-    <div class="card-panel red-text center-align">
-      {{hedgehog.name}} might be hungry
-    </div>
-    {% endif %}
+  {% if hedgehog.fed_for_today %}
+  <div class="card-panel teal-text center-align">
+    {{hedgehog.name}} has been fed all meals for today
+  </div>
+  {% else %}
+  <div class="card-panel red-text center-align">
+    {{hedgehog.name}} might be hungry
+  </div>
+  {% endif %}
+
     <table class="striped">
       <thead>
         <tr>

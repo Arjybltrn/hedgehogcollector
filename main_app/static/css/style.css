@@ -14,7 +14,7 @@ footer {
 .nav-wrapper, .page-footer {
     background-color: rgb(5, 102, 168)
 }
-.navbar-fixed {
+.navbar-fixed, h1 {
     font-family: 'Dongle', sans-serif;
 }
 
